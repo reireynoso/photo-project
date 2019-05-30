@@ -7,18 +7,18 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="src/style.css">
-    <title>Document</title>
+    <title>Slam It on The Graham</title>
 </head>
 <body>
-  <div class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper blue darken-2">
-            <a href="#!" class="brand-logo">Slap it on the <img id="graham" src="Screen Shot 2019-05-29 at 4.48.21 PM.png"></a>
-            
-            <ul id="links" class="right hide-on-med-and-down">
-                
-            </ul>
-            </div>
+  <div class="navbar-fixed ">
+        <nav class="blue darken-2">
+            <!-- <div class="nav-wrapper blue darken-2"> -->
+              <a href="index.html" class="brand-logo"><img id="graham" src="Screen Shot 2019-05-29 at 4.48.21 PM.png"></a>
+              
+              <ul id="links" class="right hide-on-med-and-down">
+                  
+              </ul>
+            <!-- </div> -->
         </nav>
     </div>
   
@@ -45,7 +45,6 @@
               
         </div>
     </div>
-
     <!-- <button data-target="modal2" class="btn modal-trigger">Modal</button> -->
     <a data-target="modal2" id="addPhoto" class="btn modal-trigger btn-floating btn-large waves-effect waves-light red valign-wrapper"><i class="large material-icons">cloud_upload</i></a>
     
@@ -84,8 +83,19 @@
               </form>
         </div>
     </div>
-    <div class="parallax-container">
+    <!-- <div class="parallax-container">
         <div class="parallax"><img src="https://res.cloudinary.com/dbajnnylp/image/upload/v1559179109/y6xkvhbhgf0xdlpdcsi0.jpg"></div>
+    </div> -->
+
+    <div class="parallax-container">
+        <div id="cont">
+          <div class="nav-wrapper">
+   
+              <h1 id="text1">Slap it on the <img id="graham" src="Screen Shot 2019-05-29 at 4.48.21 PM.png"> </h1>
+              <h3 id="text2">Random Images. Your ultimate source for uploading photos.</h2>
+        
+          </div>
+        </div>
     </div>
 
     <div class="carousel blue lighten-5">
@@ -127,12 +137,11 @@
       
     </div>
 
-    <footer class="page-footer blue darken-2">
-        
+    <footer class="page-footer blue darken-2">  
         <div class="footer-copyright">
           <div class="container">
           © 2019 Copyright Text
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          <span class="grey-text text-lighten-4 right">R&F Inc.</span>
           </div>
         </div>
       </footer>

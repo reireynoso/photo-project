@@ -4,6 +4,11 @@ class PhotosController < ApplicationController
         render json: @photos
     end
 
+    def most_liked
+        @photos = Photo.most_likes
+        render json: @photos
+    end
+
     def new
         @photo = Photo.new
     end
@@ -11,7 +16,6 @@ class PhotosController < ApplicationController
     def create
         @genre = Genre.find(params["genre"])   
         @photo = Photo.create(check_params.merge(genre: @genre))
-        # byebug
         render json: @photo
     end
 
@@ -29,7 +33,6 @@ class PhotosController < ApplicationController
     end
 
     def destroy
-        #byebug
         Photo.delete(params[:id])
     end
 

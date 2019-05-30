@@ -10,8 +10,6 @@ Genre.destroy_all
 Photo.destroy_all
 Comment.destroy_all
 
-
-
 streetwear = Genre.create(name: "Streetwear", image: "https://res.cloudinary.com/dbajnnylp/image/upload/v1559056736/c8dmitdbqwslmxqadmig.jpg")
 sneakers = Genre.create(name: "Sneakers", image: "https://res.cloudinary.com/dbajnnylp/image/upload/v1559056736/c8dmitdbqwslmxqadmig.jpg")
 memes = Genre.create(name: "Memes", image: "https://res.cloudinary.com/dbajnnylp/image/upload/v1559056736/c8dmitdbqwslmxqadmig.jpg")

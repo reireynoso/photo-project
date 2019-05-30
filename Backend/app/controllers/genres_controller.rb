@@ -3,10 +3,6 @@ class GenresController < ApplicationController
         @genres = Genre.all
         render json: @genres 
     end
-
-    def create 
-
-    end
     
     def show 
         @genre = Genre.find(params[:id])
@@ -15,7 +11,4 @@ class GenresController < ApplicationController
 
     private 
 
-    # def check_params
-    #     params.require()
-    # end
 end

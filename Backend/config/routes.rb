@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # resources :people
   # resources :comments
   # delete '/photos/:id', to: 'photos#destroy'
-  patch '/photos/:id', to: 'photos#update'
+  # patch '/photos/:id', to: 'photos#update'
+  get '/photos/most_liked', to: 'photos#most_liked'
+ 
   resources :photos, only: [:index]
 
   resources :genres, only:[:index, :show] do 

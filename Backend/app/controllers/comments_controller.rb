@@ -13,12 +13,7 @@ class CommentsController < ApplicationController
         #byebug
         @photo = Photo.find(params[:photo])
         @comment = Comment.create(check_params.merge(photo: @photo))
-        # @comment = Comment.create(check_params)
         render json: @comment
-    end
-
-    def show 
-        
     end
 
     private 

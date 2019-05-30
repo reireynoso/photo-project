@@ -13,12 +13,11 @@ const imageShow = document.querySelector('#imageShow');
 const uploadedBy = document.querySelector('#uploadedBy');
 
 const newCommentForm = document.querySelector('#newCommentForm')
-let imageURL = null;
-
-let genreSelect = document.querySelector('#genre');
+const genreSelect = document.querySelector('#genre');
 
 let currentGenre = null;
-    
+let updateAttr = null;
+let imageURL = null;
 
 document.addEventListener('DOMContentLoaded',function(){
     console.log('loaded');
@@ -36,7 +35,7 @@ document.addEventListener('DOMContentLoaded',function(){
     //modal
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, 0.5);
-    
+    loadMostLiked();
     loadGenres();
     
     imageField.addEventListener('change', function(e){
@@ -59,6 +58,14 @@ document.addEventListener('DOMContentLoaded',function(){
         })
     })
 })
+
+function loadMostLiked(){
+    fetch('http://localhost:3000/photos/most_liked')
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data[data.length - 1])
+    })
+}
 
 function newComment(){
     const newCommentField = document.querySelector('#newComment');
@@ -143,12 +150,12 @@ function generateNavLinks(genre){
         loadPhotos();
         categoryPhotos.scrollIntoView();
     })
-    // console.log(ulLinks);
+
     ulLinks.appendChild(li);
 }
 
 function loadPhotos(){
-    console.log(currentGenre)
+    // console.log(currentGenre)
     // picsList.innerHTML = "";
     fetch(`http://localhost:3000/genres/${currentGenre.id}`)
     .then(resp => resp.json())
@@ -199,24 +206,23 @@ function genEl(photo){
             // spanTitle.className = "card-title";
             // spanTitle.innerText = photo.title;
         cardImage.appendChild(modalFunc);
-        // cardImage.appendChild(spanTitle);
-
+  
         let cardContent = document.createElement('div');
         cardContent.className = 'card-content'
             let title = document.createElement('p');
             title.className = "card-title";
             title.innerText = photo.title;
             let likes = document.createElement('button');
-            likes.innerText = `${photo.likes} <3`
+            likes.innerText = `${photo.likes} ♥️`
             likes.addEventListener('click', function(){
                 photo.likes = photo.likes + 1
-                likes.innerText = `${photo.likes} <3`
+                likes.innerText = `${photo.likes} ♥️`
                 updateLikes(photo.id, photo.likes)
             })
             let remove = document.createElement('button')
             remove.innerText = "Delete"
             remove.addEventListener('click',function(){
-                //console.log(photo.id);
+             
                 removePhoto(photo.id);
                 card.remove();
             })
@@ -234,8 +240,7 @@ function genEl(photo){
                 titleElement = title;
                 editTitle.value = photo.title;
                 editDescription.value = photo.description;
-                console.log(titleElement);
-               
+
             })
         cardContent.appendChild(title);
         cardContent.appendChild(likes);
@@ -277,47 +282,6 @@ function updateLikes(id,likes){
     })
 }
 
-// function generateElements(photo){
-//     let li = document.createElement('li');
-//     li.innerText = photo.title;
-//     let button = document.createElement('button');
-//     let buttonEdit = document.createElement('button');
-//     buttonEdit.innerText = "Edit";
-//     button.innerText = "Delete";
-//     li.appendChild(button); 
-//     li.appendChild(buttonEdit);
-//     button.addEventListener('click',function(){
-//         //console.log(photo.id);
-//         removePhoto(photo.id);
-//         li.remove();
-//         button.remove();
-//     })
-//     buttonEdit.addEventListener('click',function(){
-//         // console.log(photo);
-//         let editTitle = document.querySelector('#editTitle');
-//         let editDescription = document.querySelector('#editDescription');
-//         updateAttr = photo;
-//         editTitle.value = photo.title;
-//         editDescription.value = photo.description;
-//         // console.log(updateAttr);
-//     })
- 
-//     li.addEventListener('click',function(){
-//         imageShow.src = photo.image;
-//         titleShow.innerText = photo.title;
-//         descriptionShow.innerText = photo.description;
-//         likesShow.innerText = photo.likes;
-        
-//         photo.comments.forEach(comment => {    
-//             let otherli = document.createElement('li');
-//             otherli.innerText = comment.content
-//             commentsList.append(otherli);
-//         })
-//     }) 
-//     picsList.appendChild(li);
-// }
-let updateAttr = null;
-
 function update(e){
     e.preventDefault();
      fetch(`http://localhost:3000/genres/${currentGenre.id}/photos/${updateAttr.id}`,{
@@ -339,7 +303,9 @@ function update(e){
     .then(data => {
         // generateElements(data)
         //console.log(data);
-        titleElement.innerText = data.title
+        //titleElement.innerText = data.title
+        photoShowRow.innerHTML = "";
+        loadPhotos();
     })
     editPicForm.reset();
 }

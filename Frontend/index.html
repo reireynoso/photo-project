@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="src/style.css">
+    <title>Document</title>
+</head>
+<body>
+  <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue darken-2">
+            <a href="#!" class="brand-logo">Slap it on the <img id="graham" src="Screen Shot 2019-05-29 at 4.48.21 PM.png"></a>
+            
+            <ul id="links" class="right hide-on-med-and-down">
+                
+            </ul>
+            </div>
+        </nav>
+    </div>
+  
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <img id="imageShow" src ="">
+            <h2 id="titleShow"></h2>
+            <h4 id="uploadedBy"></h4>
+            <p id="descriptionShow"></p>
+            <p id="likesShow"></p>
+            <form id="newCommentForm">
+              <label for="newComment">New Comment</label>
+              <input type="text" class="form-control" id="newComment" placeholder="Please keep the comment clean. Too lazy to add delete option." required>
+
+              <label for="newComment">Write Your Name</label>
+              <input type="text" class="form-control" id="newCommentOwner" placeholder="Please write your actual name. Too lazy to keep track." required>
+
+              <button type="submit" class="btn btn-primary">Submit Comment</button>
+            </form>
+            <h2>Comments</h2>
+            <ul id="comments">
+              
+            </ul>
+              
+        </div>
+    </div>
+
+    <!-- <button data-target="modal2" class="btn modal-trigger">Modal</button> -->
+    <a data-target="modal2" id="addPhoto" class="btn modal-trigger btn-floating btn-large waves-effect waves-light red valign-wrapper"><i class="large material-icons">cloud_upload</i></a>
+    
+    <div id="modal2" class="modal">
+        <div id="container" class="container">
+            <h1>Upload New Photo</h1>
+            <form id="new-pic-form">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="title" placeholder="Learn. Love. Code." required>
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" class="form-control" id="description" placeholder="Flatiron School" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="owner">Your Name</label>
+                    <input type="text" class="form-control" id="owner" placeholder="Your Name" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" class="form-control" id="image" placeholder="Flatiron School" required>
+                   
+                  </div>
+    
+                <div>
+                    <label for="genre">Genre</label>        
+                    <select id="genre" required>
+                        <option value="" disabled selected>Choose your option</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+    </div>
+    <div class="parallax-container">
+        <div class="parallax"><img src="https://res.cloudinary.com/dbajnnylp/image/upload/v1559179109/y6xkvhbhgf0xdlpdcsi0.jpg"></div>
+    </div>
+
+    <div class="carousel blue lighten-5">
+        <h1>Featured</h1>
+        <br>
+        <a class="carousel-item" href="#one!"><img id = "one"></a>
+        <a class="carousel-item" href="#two!"><img id= "two"></a>
+        <a class="carousel-item" href="#three!"><img id = "three"></a>
+        <a class="carousel-item" href="#four!"><img id = "four"></a>
+        <a class="carousel-item" href="#five!"><img id= "five"></a>
+    </div>
+
+    <div id="photo-show" class="center-align blue lighten-5">
+      <h1 id="category"></h1>
+        <div class="row container blue lighten-2">
+        </div>
+        
+    </div>
+    <span id="categoryPhotos" ></span>
+
+      <div id="modal3" class="modal">
+         <div class="container">
+          <form id="edit-pic-form">
+              <h1>Edit Photo</h1>
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" id="editTitle" placeholder="Learn. Love. Code.">
+              </div>
+              <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="editDescription" placeholder="Flatiron School">
+              </div>
+      
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+         </div>
+      </div>
+
+      
+    </div>
+
+    <footer class="page-footer blue darken-2">
+        
+        <div class="footer-copyright">
+          <div class="container">
+          © 2019 Copyright Text
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
+        </div>
+      </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>

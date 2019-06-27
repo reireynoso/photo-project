@@ -155,8 +155,7 @@ function generateNavLinks(genre){
 }
 
 function loadPhotos(){
-    // console.log(currentGenre)
-    // picsList.innerHTML = "";
+  
     fetch(`http://localhost:3000/genres/${currentGenre.id}`)
     .then(resp => resp.json())
     .then(data => {
@@ -202,9 +201,6 @@ function genEl(photo){
                 loadComments(photo.id);
             }) 
             modalFunc.appendChild(photoImage);
-            // let spanTitle = document.createElement('span');
-            // spanTitle.className = "card-title";
-            // spanTitle.innerText = photo.title;
         cardImage.appendChild(modalFunc);
   
         let cardContent = document.createElement('div');

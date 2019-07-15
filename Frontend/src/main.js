@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded',function(){
     //modal
     var elems = document.querySelectorAll('.modal');
     var instances = M.Modal.init(elems, 0.5);
-    loadMostLiked();
+    // loadMostLiked();
     loadGenres();
     
     imageField.addEventListener('change', function(e){
@@ -114,7 +114,7 @@ function loadGenres(){
     fetch('http://localhost:3000/genres')
     .then(resp => resp.json())
     .then(data => {
-        //console.log(data)
+        // console.log(data)
         data.forEach(genre => {
             generateNavLinks(genre);
             generateGenreChoice(genre);

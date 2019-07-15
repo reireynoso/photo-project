@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded',function(){
 })
 
 // function loadMostLiked(){
-//     fetch('http://localhost:3000/photos/most_liked')
+//     fetch('https://photo-uploader-api.herokuapp.com/photos/most_liked')
 //     .then(resp => resp.json())
 //     .then(data => {
 //         console.log(data[data.length - 1])
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded',function(){
 function newComment(){
     const newCommentField = document.querySelector('#newComment');
     const newOwnerField = document.querySelector('#newCommentOwner')
-    fetch(`http://localhost:3000/genres/${currentGenre.id}/photos/${currentPhoto.id}/comments`,{
+    fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}/photos/${currentPhoto.id}/comments`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -93,7 +93,7 @@ function loadFeatured(){
     let featureThree = document.querySelector('#three');
     let featureFour = document.querySelector('#four');
     let featureFive = document.querySelector('#five');
-    const allPhotos = fetch('http://localhost:3000/photos/')
+    const allPhotos = fetch('https://photo-uploader-api.herokuapp.com/photos/')
     .then(resp => resp.json())
     .then(data => {
         //  console.log(data[data.length])
@@ -111,7 +111,7 @@ function randomGenerator(length){
 }
 
 function loadGenres(){
-    fetch('http://localhost:3000/genres')
+    fetch('https://photo-uploader-api.herokuapp.com/genres')
     .then(resp => resp.json())
     .then(data => {
         // console.log(data)
@@ -154,7 +154,7 @@ function generateNavLinks(genre){
 
 function loadPhotos(){
   
-    fetch(`http://localhost:3000/genres/${currentGenre.id}`)
+    fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}`)
     .then(resp => resp.json())
     .then(data => {
         data.photos.forEach(photo => {
@@ -248,7 +248,7 @@ function genEl(photo){
 }
 function loadComments(id){
     commentsList.innerHTML = "";
-    fetch(`http://localhost:3000/genres/${currentGenre.id}/photos/${id}`)
+    fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}/photos/${id}`)
     .then(resp => resp.json())
     .then(data => {
         data.comments.forEach(comment => {
@@ -264,7 +264,7 @@ function generateCommentElements(comment){
 }
 
 function updateLikes(id,likes){
-    fetch(`http://localhost:3000/genres/${currentGenre.id}/photos/${id}`,{
+    fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}/photos/${id}`,{
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -278,7 +278,7 @@ function updateLikes(id,likes){
 
 function update(e){
     e.preventDefault();
-     fetch(`http://localhost:3000/genres/${currentGenre.id}/photos/${updateAttr.id}`,{
+     fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}/photos/${updateAttr.id}`,{
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
@@ -305,7 +305,7 @@ function update(e){
 }
 
 function removePhoto(id){
-    fetch(`http://localhost:3000/genres/10/photos/${id}`,{
+    fetch(`https://photo-uploader-api.herokuapp.com/genres/10/photos/${id}`,{
         method: "DELETE"
     })
 }
@@ -318,7 +318,7 @@ function post(e){
     const ownerField = document.querySelector('#owner');
     const genreField = document.querySelector('#genre');
     // console.log(genreSelect.value);
-     fetch(`http://localhost:3000/genres/${genreSelect.value}/photos`,{
+     fetch(`https://photo-uploader-api.herokuapp.com/genres/${genreSelect.value}/photos`,{
         method: "POST",
         headers: {
             "Content-Type": "application/json",

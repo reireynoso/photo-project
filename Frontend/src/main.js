@@ -45,27 +45,25 @@ document.addEventListener('DOMContentLoaded',function(){
         let formData = new FormData();
         formData.append('file',file);
         formData.append('upload_preset',CLOUDINARY_UPLOAD_PRESET);
-        axios({
-            url: CLOUDINARY_URL, 
+        fetch(CLOUDINARY_URL, {
             method: "POST",
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            data: formData
+            body: formData,
         })
-        .then(function(res) {
-            imageURL = res.data.secure_url //URL generated from uploading image
+        .then(resp => resp.json())
+        .then(data => {
+            // console.log(data.url)
+            imageURL = data.url
         })
     })
 })
 
-function loadMostLiked(){
-    fetch('http://localhost:3000/photos/most_liked')
-    .then(resp => resp.json())
-    .then(data => {
-        console.log(data[data.length - 1])
-    })
-}
+// function loadMostLiked(){
+//     fetch('http://localhost:3000/photos/most_liked')
+//     .then(resp => resp.json())
+//     .then(data => {
+//         console.log(data[data.length - 1])
+//     })
+// }
 
 function newComment(){
     const newCommentField = document.querySelector('#newComment');

@@ -1,10 +1,10 @@
-#Photo Uploader
+# Photo Uploader
 Users are able to upload photos from their computers. User are able to view other photos generated as well as comment, edit, and delete photos. 
 
-##Getting Started
+## Getting Started
 First, fork and clone this repo. There are two repositories that will need setup, front-end and back-end.Change directory into Backend. 
 
-###Prerequisites
+### Prerequisites
 Ruby and Rails and Postgresql have to be installed on your computer. 
 
 * If it is not installed, start by going in your terminal, and type:
@@ -29,15 +29,15 @@ Once the Ruby on Rails has been setup and installed, run 'bundle install', 'rail
 ### Running the App
 Once the rails server is running, cd into the Frontend directory and open the index.html with a default browser.
 
-##Built With
+## Built With
 Ruby on Rails - The api server used
 Materialize - CSS library used
 Javascript/HTML - front-end manipulation
 
 
-##Authors
+## Authors
 Reinald Reynoso - Initial Work
 
 
-##Acknowledgments
+## Acknowledgments
 * Flatiron School

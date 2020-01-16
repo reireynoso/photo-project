@@ -19,51 +19,41 @@ let currentGenre = null;
 let updateAttr = null;
 let imageURL = null;
 
-document.addEventListener('DOMContentLoaded',function(){
-    console.log('loaded');
-    newPicForm.addEventListener('submit',post)
-    editPicForm.addEventListener('submit',update)
-    newCommentForm.addEventListener('submit',newComment);
-    loadFeatured();
-    
-    var elemsPar = document.querySelectorAll('.parallax');
-    var instancesPar = M.Parallax.init(elemsPar,0);
-    
-    //carousel
-    var elemsCar = document.querySelectorAll('.carousel');
-    var instancesCar = M.Carousel.init(elemsCar, 200);
-    //modal
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, 0.5);
-    // loadMostLiked();
-    loadGenres();
-    
-    imageField.addEventListener('change', function(e){
-        const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dbajnnylp/image/upload';
-        const CLOUDINARY_UPLOAD_PRESET = 'hh06wty3';
-        let file = event.target.files[0];
-        let formData = new FormData();
-        formData.append('file',file);
-        formData.append('upload_preset',CLOUDINARY_UPLOAD_PRESET);
-        fetch(CLOUDINARY_URL, {
-            method: "POST",
-            body: formData,
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            // console.log(data.url)
-            imageURL = data.url
-        })
+
+console.log('loaded');
+newPicForm.addEventListener('submit',post)
+editPicForm.addEventListener('submit',update)
+newCommentForm.addEventListener('submit',newComment);
+loadFeatured();
+
+var elemsPar = document.querySelectorAll('.parallax');
+var instancesPar = M.Parallax.init(elemsPar,0);
+
+//carousel
+var elemsCar = document.querySelectorAll('.carousel');
+var instancesCar = M.Carousel.init(elemsCar, 200);
+//modal
+var elems = document.querySelectorAll('.modal');
+var instances = M.Modal.init(elems, 0.5);
+loadGenres();
+
+imageField.addEventListener('change', function(e){
+    const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dbajnnylp/image/upload';
+    const CLOUDINARY_UPLOAD_PRESET = 'hh06wty3';
+    let file = event.target.files[0];
+    let formData = new FormData();
+    formData.append('file',file);
+    formData.append('upload_preset',CLOUDINARY_UPLOAD_PRESET);
+    fetch(CLOUDINARY_URL, {
+        method: "POST",
+        body: formData,
+    })
+    .then(resp => resp.json())
+    .then(data => {
+        // console.log(data.url)
+        imageURL = data.url
     })
 })
-
-// function loadMostLiked(){
-//     fetch('https://photo-uploader-api.herokuapp.com/photos/most_liked')
-//     .then(resp => resp.json())
-//     .then(data => {
-//         console.log(data[data.length - 1])
-//     })
-// }
 
 function newComment(e){
     e.preventDefault()

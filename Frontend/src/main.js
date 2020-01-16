@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded',function(){
 //     })
 // }
 
-function newComment(){
+function newComment(e){
+    e.preventDefault()
     const newCommentField = document.querySelector('#newComment');
     const newOwnerField = document.querySelector('#newCommentOwner')
     fetch(`https://photo-uploader-api.herokuapp.com/genres/${currentGenre.id}/photos/${currentPhoto.id}/comments`,{
